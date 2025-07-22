@@ -10,7 +10,7 @@ public class BaseService {
     private final static String BASE_URI = "http://64.227.160.186:8080/";
     private RequestSpecification requestSpecification;
 
-    BaseService() {
+    public BaseService() {
 
         requestSpecification = RestAssured.given().baseUri(BASE_URI).header("Content-Type", "application/json");
 
@@ -31,8 +31,19 @@ public class BaseService {
 
     }
 
+    protected Response getRequest(String endpoint, String accoutNumber, int page, int size) {
+        return requestSpecification.queryParam("accountNumber", accoutNumber).queryParam("page", page).queryParam("size", size).get(endpoint);
+
+    }
+
+    protected Response putRequest(Object payload, String endpoint) {
+
+        return requestSpecification.body(payload).put(endpoint);
+    }
+
+
     protected void setToken(String token) {
-        requestSpecification.header("Authorization", "Bearer"+" "+ token);
+        requestSpecification.header("Authorization", "Bearer" + " " + token);
 
     }
 

@@ -1,6 +1,6 @@
-package com.api.base;
+package com.api.services;
 
-import com.api.models.request.payloads.ForgotPassReqPayloads;
+import com.api.base.BaseService;
 import com.api.models.request.payloads.LoginReqPayload;
 import com.api.models.request.payloads.ResetPassReqPayload;
 import com.api.models.request.payloads.SignupReqPayload;
@@ -17,7 +17,7 @@ public class AuthService extends BaseService {
 
     }
 
-    public Response forgotPassRequest(ForgotPassReqPayloads payload) {
+    public Response forgotPassRequest(Object payload) {
         return postRequest(payload, Base_PATH + "forgot-password");
     }
 

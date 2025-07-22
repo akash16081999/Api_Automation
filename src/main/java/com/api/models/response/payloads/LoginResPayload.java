@@ -10,7 +10,6 @@ public class LoginResPayload {
     String username;
     String email;
     List roles;
-
     public LoginResPayload() {
 
     }
